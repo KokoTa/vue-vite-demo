@@ -1,19 +1,25 @@
 <template>
   <div>
+    <!-- 测试 computed -->
     <div>User: {{ user }} - {{ userComputed }}</div>
+    <!-- 测试 method -->
     <div>List: {{ list }}</div>
     <button @click="getRandomList">ListRandom</button>
+    <!-- 测试 $emit -->
     <div>Count: {{ count }}</div>
+    <!-- 测试 provide/inject -->
     <div>FatherList: {{ fatherList }}</div>
     <div>fatherObject: {{ fatherObject }}</div>
+    <!-- 测试 ref -->
     <div ref="div">DivRef</div>
+    <!-- 测试嵌套的响应式 -->
     <div>{{ obj.a.b?.count }}</div>
     <button @click="objHandle">set nest no exist value</button>
   </div>
 </template>
 
 <script>
-import { computed, h, inject, onMounted, reactive, ref, toRefs, watch } from "vue";
+import { computed, h, inject, onMounted, reactive, ref, toRefs, watch, watchEffect } from "vue";
 
 export default {
   props: ['user'],
@@ -64,6 +70,17 @@ export default {
     // 获取父组件组件传入的数据
     const fatherList = inject('fatherList')
     const fatherObject = inject('fatherObject')
+
+    const stop = watchEffect((onInvalidate) => {
+      onInvalidate(() => {
+        console.log('invalidate')
+      })
+      console.log('watchEffect: ', count.value)
+    })
+    // stop()
+    const stop2 = watch(count, () => {
+      console.log('watch: ', count.value)
+    })
 
     return {
       user,

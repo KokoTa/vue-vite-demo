@@ -22,6 +22,11 @@
   <TeleportItem />
   <!-- 测试 WebComponent -->
   <web-component name="Brain" />
+  <!-- VueRoute测试 -->
+  <router-link to="/route-1">route-1</router-link>
+  <router-link to="/route-2">route-2</router-link>
+  <router-link to="/route-3/1/2/3/4/5">route-3</router-link>
+  <router-view></router-view>
 </template>
 
 <script>
@@ -34,7 +39,7 @@ export default {
     AsyncComponent: defineAsyncComponent(() => import("./components/AsyncItem.vue")),
     SetupItem,
     TeleportItem
-},
+  },
   setup(props) {
     const fatherList = ref([1,2,3])
     const fatherObject = reactive({

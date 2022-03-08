@@ -22,22 +22,58 @@ const router = createRouter({
   routes: [
     {
       path: '/route-1',
-      component: RouterItem1Vue
+      meta: {
+        name: 'route1'
+      },
+      component: RouterItem1Vue,
+      beforeEnter() {
+        console.log('route-1 beforeEnter')
+        return true
+      }
     },
     {
       path: '/route-2',
-      component: RouterItem2Vue
+      meta: {
+        name: 'route2'
+      },
+      component: RouterItem2Vue,
+      beforeEnter() {
+        console.log('route-2 beforeEnter')
+        return true
+      }
     },
     {
       path: '/:notFound(.*)*',
-      component: RouterNotFoundVue
+      meta: {
+        name: 'notFound'
+      },
+      component: RouterNotFoundVue,
+      beforeEnter() {
+        console.log('notFound beforeEnter')
+        return true
+      }
     }
   ]
 })
 
 router.beforeEach((to, from) => {
-  return '/'
+  console.log('beforeEach')
+  return true
 });
+
+router.beforeResolve((to, from) => {
+  console.log('beforeResolve')
+  return true
+})
+
+router.afterEach((to, from) => {
+  console.log('afterEach')
+  return true
+})
+
+router.onError((err) => {
+  console.log(err)
+})
 
 app.use(router)
 

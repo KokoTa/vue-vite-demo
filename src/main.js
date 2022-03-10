@@ -4,6 +4,7 @@ import hidden from './directive/hidden'
 import WebComponentItemCeVue from './components/WebComponentItem.ce.vue'
 import { createRouter, createWebHistory} from 'vue-router'
 import RouterItem1Vue from './components/RouterItem1.vue'
+import RouterItem1ChildVue from './components/RouterItem1Child.vue'
 import RouterItem2Vue from './components/RouterItem2.vue'
 import RouterNotFoundVue from './components/RouterNotFound.vue'
 
@@ -29,7 +30,16 @@ const router = createRouter({
       beforeEnter() {
         console.log('route-1 beforeEnter')
         return true
-      }
+      },
+      children: [
+        {
+          path: 'child',
+          meta: {
+            name: 'child'
+          },
+          component: RouterItem1ChildVue
+        }
+      ]
     },
     {
       path: '/route-2',

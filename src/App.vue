@@ -23,10 +23,11 @@
   <!-- 测试 WebComponent -->
   <web-component name="Brain" />
   <!-- VueRoute测试 -->
-  <router-link to="/route-1">route-1</router-link>
-  <router-link to="/route-1?name=name">route-1-name</router-link>
-  <router-link to="/route-2">route-2</router-link>
-  <router-link to="/route-3/1/2/3/4/5">route-3</router-link>
+  <router-link style="padding: 10px" to="/route-1">route-1</router-link>
+  <router-link style="padding: 10px" to="/route-1/child">route-1-child</router-link>
+  <router-link style="padding: 10px" to="/route-1?name=name">route-1-query</router-link>
+  <router-link style="padding: 10px" to="/route-2">route-2</router-link>
+  <router-link style="padding: 10px" to="/route-3/1/2/3/4/5">route-3</router-link>
   <router-view></router-view>
 </template>
 

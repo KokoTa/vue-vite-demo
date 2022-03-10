@@ -1,6 +1,7 @@
 <template>
   <div>
     Route-1
+    <router-view></router-view>
   </div>
 </template>
 

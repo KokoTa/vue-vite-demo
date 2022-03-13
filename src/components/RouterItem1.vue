@@ -41,8 +41,8 @@ export default {
     console.log('beforeRouteLeave')
     // 在导航离开渲染该组件的对应路由时调用
     // 与 `beforeRouteUpdate` 一样，它可以访问组件实例 `this`
-    const answer = window.confirm('Do you really want to leave? you have unsaved changes!')
-    if (!answer) return false
+    // const answer = window.confirm('Do you really want to leave? you have unsaved changes!')
+    // if (!answer) return false
   }
 };
 </script>

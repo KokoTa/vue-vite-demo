@@ -27,21 +27,30 @@
   <router-link style="padding: 10px" to="/route-1/child">route-1-child</router-link>
   <router-link style="padding: 10px" to="/route-1?name=name">route-1-query</router-link>
   <router-link style="padding: 10px" to="/route-2">route-2</router-link>
-  <router-link style="padding: 10px" to="/route-3/1/2/3/4/5">route-3</router-link>
-  <router-view></router-view>
+  <router-link style="padding: 10px" to="/route-2?name=name">route-2-query</router-link>
+  <router-link style="padding: 10px" to="/route-not-found/1/2/3/4/5">route-not-found</router-link>
+  <router-view v-slot="{ Component }">
+    <transition name="fade">
+      <component :is="Component"></component>
+    </transition>
+  </router-view>
+  <!-- 测试过渡 -->
+  <TransitionItem />
 </template>
 
 <script>
 import { defineAsyncComponent, provide, reactive, ref } from 'vue';
 import SetupItem from './components/SetupItem.vue';
 import TeleportItem from './components/TeleportItem.vue';
+import TransitionItem from './components/TransitionItem.vue';
 
 export default {
   components: {
     AsyncComponent: defineAsyncComponent(() => import("./components/AsyncItem.vue")),
     SetupItem,
-    TeleportItem
-  },
+    TeleportItem,
+    TransitionItem
+},
   setup(props) {
     const fatherList = ref([1,2,3])
     const fatherObject = reactive({
@@ -79,5 +88,15 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
   height: 1000px;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>

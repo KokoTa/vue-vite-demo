@@ -30,7 +30,7 @@
   <router-link style="padding: 10px" to="/route-2?name=name">route-2-query</router-link>
   <router-link style="padding: 10px" to="/route-not-found/1/2/3/4/5">route-not-found</router-link>
   <router-view v-slot="{ Component }">
-    <transition name="fade">
+    <transition name="fade" mode="out-in">
       <component :is="Component"></component>
     </transition>
   </router-view>

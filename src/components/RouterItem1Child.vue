@@ -12,7 +12,7 @@ export default {
     };
   },
   created() {
-    // console.log(this.$route)
+    console.log('child route', this.$route)
   },
 };
 </script>

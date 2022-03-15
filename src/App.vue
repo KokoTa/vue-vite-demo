@@ -22,7 +22,7 @@
   <TeleportItem />
   <!-- 测试 WebComponent -->
   <web-component name="Brain" />
-  <!-- VueRoute测试 -->
+  <!-- 测试VueRouter -->
   <router-link style="padding: 10px" to="/route-1">route-1</router-link>
   <router-link style="padding: 10px" to="/route-1/child">route-1-child</router-link>
   <router-link style="padding: 10px" to="/route-1?name=name">route-1-query</router-link>
@@ -36,6 +36,8 @@
   </router-view>
   <!-- 测试过渡 -->
   <TransitionItem />
+  <!-- 测试Vuex -->
+  <VuexItem />
 </template>
 
 <script>
@@ -43,13 +45,15 @@ import { defineAsyncComponent, provide, reactive, ref } from 'vue';
 import SetupItem from './components/SetupItem.vue';
 import TeleportItem from './components/TeleportItem.vue';
 import TransitionItem from './components/TransitionItem.vue';
+import VuexItem from './components/VuexItem.vue';
 
 export default {
   components: {
     AsyncComponent: defineAsyncComponent(() => import("./components/AsyncItem.vue")),
     SetupItem,
     TeleportItem,
-    TransitionItem
+    TransitionItem,
+    VuexItem
 },
   setup(props) {
     const fatherList = ref([1,2,3])

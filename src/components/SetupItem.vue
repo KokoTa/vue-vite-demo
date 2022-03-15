@@ -81,6 +81,7 @@ export default {
     const stop2 = watch(count, () => {
       console.log('watch: ', count.value)
     })
+    // stop2()
 
     return {
       user,
